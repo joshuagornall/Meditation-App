@@ -1,21 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import AppContainer from './src/navigation/AppContainer';
+import React, { useEffect, useState } from 'react'
+import AppContainer from './src/navigation/AppContainer'
+import * as Font from 'expo-font'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <AppContainer/>
-      <StatusBar style="auto" />
-    </View>
-  );
+const App = () => {
+  const [isFontLoaded, setIsFontLoaded] = useState(false);
+  
+  const fontLoading = async () => {
+    await Font.loadAsync({
+      'sf-pro': require('./assets/fonts/SF-Pro-Display-Light.otf'),
+    });
+    setIsFontLoaded(true);
+  }
+
+  useEffect(() => {
+    fontLoading();
+  }, [])
+  
+  return isFontLoaded ? <AppContainer /> : null;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App

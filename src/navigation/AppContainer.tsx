@@ -8,6 +8,4 @@ const AppContainer = () => {
   );
 }
 
-AppContainer.propTypes = {}
-
 export default AppContainer
