@@ -1,11 +1,18 @@
-import React from 'react'
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 
-const AppContainer = () => {
-  return (
-      <div>
-          <text>AppContainer hello world</text>
-      </div>
-  );
-}
+import HomeScreen from '../screens/HomeScreen';
+import RelaxScreen from '../screens/RelaxScreen';
+import TimerScreen from '../screens/TimerScreen';
+import CompleteScreen from '../screens/CompleteScreen';
 
-export default AppContainer
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Relax: RelaxScreen,
+    Timer: TimerScreen,
+    Complete: CompleteScreen,
+  },
+  {},
+);
+export default createAppContainer(RootStack);
